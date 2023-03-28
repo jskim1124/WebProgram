@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Sample</title>
+    <script>
+      window.onload = function () {
+        let statusNum = 1;
+        const myParagraph = document.getElementById("my-paragraph");
+
+        myParagraph.innerHTML = "This is a new paragraph.";
+        myParagraph.style.color = "red";
+
+        const addButton = document.getElementById("add-button");
+
+        addButton.addEventListener("click", function () {
+          const actionStatus = document.getElementById("action-status");
+          const nameInput = document.getElementById("my-input");
+
+          let clickStatus = document.createElement("div");
+          clickStatus.setAttribute("class", "status");
+          clickStatus.innerHTML = String(statusNum) + ". " + nameInput.value;
+          statusNum += 1;
+
+          actionStatus.appendChild(clickStatus);
+          nameInput.value = "";
+        });
+
+        const delButton = document.getElementById("del-button");
+
+        delButton.addEventListener("click", function () {
+          const status = document.getElementsByClassName("status");
+          status[status.length - 1].remove();
+          statusNum -= 1;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Sample</h1>
+
+    <p id="my-paragraph">This is a sample paragraph.</p>
+    <input name="name" placeholder="이름을 입력하세요." id="my-input">
+    <button id="add-button">Add Status</button>
+    <button id="del-button">Delete Status</button>
+    <p id="action-status">Action Status:</p>
+  </body>
+</html>
